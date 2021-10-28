@@ -1,0 +1,17 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-8 order-md-1">
+            <h4 class="mb-3">Alta Usuario</h4>
+            <div class="row">
+                <div class="col-md-12 mb-3">
+                    <label for="especialidad">Tipo Usuario</label>
+                    <select class="custom-select custom-select-lg form-control mb-3">
+                        <option selected value="0">Selecciona una opción</option>
+                        <option *ngFor="let item of especialidades" [value]="item.nombre"
+                            (click)="enviarEspecialidad()">{{item.nombre}}</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
