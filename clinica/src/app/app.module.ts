@@ -19,8 +19,10 @@ import { SolicitarTurnoComponent } from './componentes/solicitar-turno/solicitar
 import { NavbarComponent } from './componentes/navbar/navbar.component';
 import { EnvioEmailComponent } from './componentes/envio-email/envio-email.component';
 import { AltaEspecialidadComponent } from './componentes/alta-especialidad/alta-especialidad.component';
-import { ListadoEspecilidadComponent } from './componentes/listado-especilidad/listado-especilidad.component';
 import { AltaUsuarioComponent } from './componentes/alta-usuario/alta-usuario.component';
+import { ListadoEspecialidadComponent } from './componentes/listado-especialidad/listado-especialidad.component';
+import { ListadoUsuariosComponent } from './componentes/listado-usuarios/listado-usuarios.component';
+import { UsuarioDetalleComponent } from './componentes/usuario-detalle/usuario-detalle.component';
 
 
 @NgModule({
@@ -37,8 +39,10 @@ import { AltaUsuarioComponent } from './componentes/alta-usuario/alta-usuario.co
     NavbarComponent,
     EnvioEmailComponent,
     AltaEspecialidadComponent,
-    ListadoEspecilidadComponent,
-    AltaUsuarioComponent
+    AltaUsuarioComponent,
+    ListadoEspecialidadComponent,
+    ListadoUsuariosComponent,
+    UsuarioDetalleComponent
   ],
   imports: [
     BrowserModule,

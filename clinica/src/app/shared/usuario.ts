@@ -16,6 +16,5 @@ export class Usuario {
     img1Url: string;
     img2Nombre: string;
     img2Url: string;
-    aprobado: boolean;
-    emailVerificado: boolean;
+    habilitado: boolean;
 }

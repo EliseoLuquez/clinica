@@ -1,1 +1,15 @@
-<p>seccion-usuarios works!</p>
+<div class="container">
+    <div class="row">
+        <div class="col-3 text-center">
+            <button class="btn btn-success" (click)="mostrarRegistro()">Registrar</button>
+        </div>
+        <br>
+        <div class="col-12" *ngIf="registro"> 
+            <app-alta-usuario></app-alta-usuario>
+        </div>
+        
+        <app-listado-usuarios [usuarios]="listaUsuarios" (usuarioSeleccionado)="mostrarDatosUsuarioSeleccionado($event)"></app-listado-usuarios>
+        
+        <app-usuario-detalle *ngIf="mostrarDetalle" [usuarioDetalle]="usuarioElegido"></app-usuario-detalle>
+    </div>
+</div>

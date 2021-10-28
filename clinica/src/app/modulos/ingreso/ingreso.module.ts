@@ -5,8 +5,11 @@ import { IngresoRoutingModule } from './ingreso-routing.module';
 import { environment } from 'src/environments/environment';
 import { ReactiveFormsModule } from '@angular/forms';
 
+
+
 @NgModule({
-  declarations: [],
+  declarations: [
+  ],
   imports: [
     CommonModule,
     IngresoRoutingModule,

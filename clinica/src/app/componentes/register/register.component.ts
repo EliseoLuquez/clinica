@@ -92,15 +92,12 @@ export class RegisterComponent implements OnInit {
     this.usuario.administrador = this.administrador;
     this.usuario.especialista = this.especialista;
     if(this.usuario.especialista){
-      this.usuario.aprobado = false;
+      this.usuario.habilitado = false;
     }
     else{
-      this.usuario.aprobado = true;
+      this.usuario.habilitado = true;
     }
     this.usuario.paciente = this.paciente;
-    
-    
-    this.usuario.emailVerificado = false;
 
     this.authSvc.onRegister(this.usuario).then(async (result) => {
       //this.usuario.logueado = true;
@@ -151,10 +148,7 @@ export class RegisterComponent implements OnInit {
     console.log(especialidad);
   
     this.especialidadSeleccionada = especialidad;
-    //this.especialidades.push(this.actorSeleccionado);
-    //let apellidoYNombre = actor.nombre + " " + actor.apellido;
-    //this.formulario.controls['actor'].setValue(apellidoYNombre);
-    //this.formulario.controls['actores'].setValue(this.actores);
+    this.especialidades.push(this.especialidadSeleccionada);
   }
 
   //   validarEspecialista(control: AbstractControl){

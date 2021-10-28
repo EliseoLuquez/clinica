@@ -11,6 +11,7 @@ import { AuthService } from 'src/app/service/auth.service';
 export class NavbarComponent implements OnInit {
 
   logueado = false;
+  adminLogueado = false;
   usuario: any;
   email: string;
 
@@ -26,14 +27,18 @@ export class NavbarComponent implements OnInit {
 
     this.authSvc.afAuth.authState.subscribe(res=>{
       if(res && res.uid){
-        console.log(res);;
         this.logueado = true;
+        if(this.authSvc.isLoggedInAdmin)
+        {
+          this.adminLogueado = true;
+        }
         //this.usuario.email = res.email || "";
         //this.ls.set("usuarioLs", JSON.stringify(this.usuario));
         this.email = res.email || "";
       }
 
     });
+    
   }
 
   goRegistro(){
@@ -46,6 +51,10 @@ export class NavbarComponent implements OnInit {
 
   goBienvenida(){
     this.router.navigate(['bienvenida']);
+  }
+
+  goSeccionUsuarios(){
+    this.router.navigate(['seccionUsuarios']);
   }
 
   salir(){

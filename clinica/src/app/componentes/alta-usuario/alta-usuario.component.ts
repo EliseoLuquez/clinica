@@ -51,9 +51,8 @@ export class AltaUsuarioComponent implements OnInit {
     this.usuario.administrador = true;
     this.usuario.especialista = false;
     this.usuario.paciente = false;
-    this.usuario.aprobado = true;
-    
-    this.usuario.emailVerificado = false;
+    this.usuario.habilitado = true;
+  
 
     this.authSvc.onRegister(this.usuario).then(async (result) => {
       //this.usuario.logueado = true;

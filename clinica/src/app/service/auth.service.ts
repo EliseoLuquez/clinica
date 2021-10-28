@@ -13,12 +13,31 @@ import { first } from 'rxjs/operators';
 export class AuthService {
 
   public isLoggedIn = false;
+  public isLoggedInAdmin = false;
   usuarios: Usuario[] = [];
 
   constructor(public afAuth: AngularFireAuth, private router: Router, private firebaseSvc: FirebaseService) {
     this.firebaseSvc.getUsuarios().subscribe(usuarios => {
       this.usuarios = usuarios;
+      afAuth.authState.subscribe(usuario =>{
+        this.usuarios.forEach( item => {
+          if(usuario != null){
+            if(usuario.uid && item.id){
+              if(item.administrador)
+              {
+                  this.isLoggedInAdmin = true;
+              }
+              this.isLoggedIn = true;
+              //this.usuario.email = usuario.email || "";
+              //this.ls.set("usuarioLs", JSON.stringify(this.usuario));
+              //this.email = usuario.email || "";
+            }
+          }
+        });
+      });
     });
+    console.log(this.usuarios);
+    
   }
 
   //login
@@ -72,7 +91,7 @@ export class AuthService {
   verificarAprobacionAdmin(usuario: Usuario) {
     this.usuarios.forEach(item => {
       if (item.email === usuario.email)
-        if (item.aprobado) {
+        if (item.habilitado) {
           return true;
         }
         else {

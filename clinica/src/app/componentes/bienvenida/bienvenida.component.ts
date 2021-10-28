@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthService } from 'src/app/service/auth.service';
+import { FlowAssignment } from 'typescript';
 
 @Component({
   selector: 'app-bienvenida',
@@ -8,9 +10,17 @@ import { Router } from '@angular/router';
 })
 export class BienvenidaComponent implements OnInit {
 
-  constructor(private router: Router) { }
+  islogged = false;
+
+  constructor(private router: Router, private authSv: AuthService) { }
 
   ngOnInit(): void {
+    if(this.authSv.isLoggedIn){
+      this.islogged = true;
+    }
+    else{
+      this.islogged = false;
+    }
   }
 
   goIngreso(){

@@ -38,6 +38,9 @@ export class FirebaseService {
       tipoUsuario: usuario.tipoUsuario,
       obraSocial: usuario.obraSocial,
       especialidad: usuario.especialidad,
+      administrador: usuario.administrador,
+      especilista: usuario.especialista,
+      paciente: usuario.paciente,
       img1Nombre: img.nombre,
       img1Url: img.url,
     });
@@ -89,7 +92,12 @@ export class FirebaseService {
 
   updateUsuario(usuario: Usuario) {
     const tutorialsRef = this.db.collection(this.dbPathUsuarios);
-    tutorialsRef.doc(usuario.id).update({ nombre: usuario.nombre });
+    tutorialsRef.doc(usuario.id).update({ aprobado: usuario.especialista });
+  }
+
+  updateUsuarioEspecialista(usuario: Usuario) {
+    const tutorialsRef = this.db.collection(this.dbPathUsuarios);
+    tutorialsRef.doc(usuario.id).update({ habilitado: usuario.habilitado });
   }
 
   getUsuarios() {
