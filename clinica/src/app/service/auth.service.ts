@@ -22,20 +22,30 @@ export class AuthService {
       afAuth.authState.subscribe(usuario =>{
         this.usuarios.forEach( item => {
           if(usuario != null){
-            if(usuario.uid && item.id){
+
+            if(usuario.email == item.email){
+              console.log(item.administrador);
+              
               if(item.administrador)
               {
                   this.isLoggedInAdmin = true;
+              }
+              else{
+                this.isLoggedInAdmin = false;
               }
               this.isLoggedIn = true;
               //this.usuario.email = usuario.email || "";
               //this.ls.set("usuarioLs", JSON.stringify(this.usuario));
               //this.email = usuario.email || "";
             }
+            else{
+              this.isLoggedIn = false;
+            }
           }
         });
       });
     });
+    
     console.log(this.usuarios);
     
   }
@@ -43,6 +53,7 @@ export class AuthService {
   //login
   async singIn(usuario: Usuario) {
     console.log(usuario.email);
+
     try{
       return await this.afAuth.signInWithEmailAndPassword(usuario.email, usuario.password);
     }
@@ -67,6 +78,8 @@ export class AuthService {
   }
 
   public async signOut() {
+    // this.isLoggedInAdmin = false;
+    // this.isLoggedIn = false;
     try{
       await this.afAuth.signOut();
       this.router.navigate(['/']);
@@ -102,7 +115,10 @@ export class AuthService {
   }
 
   obtenerUsuaurioActual(){
-    return this.afAuth.authState.pipe(first()).toPromise();
+    this.afAuth.authState.subscribe(usuario => {
+      return usuario;
+    });
+    
   }
 }
 

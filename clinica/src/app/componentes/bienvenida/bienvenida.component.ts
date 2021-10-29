@@ -15,12 +15,16 @@ export class BienvenidaComponent implements OnInit {
   constructor(private router: Router, private authSv: AuthService) { }
 
   ngOnInit(): void {
+    console.log(this.authSv.isLoggedIn);
+    
     if(this.authSv.isLoggedIn){
       this.islogged = true;
     }
     else{
       this.islogged = false;
     }
+    console.log(this.islogged);
+    
   }
 
   goIngreso(){

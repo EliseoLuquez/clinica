@@ -15,11 +15,11 @@
             <li class="nav-item" *ngIf="!logueado">
                 <a class="btn text-light" (click)="goRegistro()">Registro</a>
             </li>
-            <li class="nav-item">
-                <a class="btn text-light" (click)="goIngreso()" *ngIf="!logueado">Ingreso</a>
+            <li class="nav-item" *ngIf="!logueado">
+                <a class="btn text-light" (click)="goIngreso()" >Ingreso</a>
             </li>
             <li class="nav-item" *ngIf="adminLogueado">
-                <a class="btn text-light" (click)="goSeccionUsuarios()" *ngIf="logueado">Sección Usuarios</a>
+                <a class="btn text-light" (click)="goSeccionUsuarios()">Sección Usuarios</a>
             </li>
             <!-- <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="dropdown09" data-toggle="dropdown" aria-haspopup="true"

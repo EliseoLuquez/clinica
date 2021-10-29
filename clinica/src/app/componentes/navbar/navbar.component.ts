@@ -24,7 +24,9 @@ export class NavbarComponent implements OnInit {
     //   console.log(this.logueado);
     //   this.logueado = true;
     // }
-
+    this.usuario = this.authSvc.obtenerUsuaurioActual();
+    console.log(this.usuario);
+    
     this.authSvc.afAuth.authState.subscribe(res=>{
       if(res && res.uid){
         this.logueado = true;
@@ -32,9 +34,15 @@ export class NavbarComponent implements OnInit {
         {
           this.adminLogueado = true;
         }
+        else{
+          this.adminLogueado = false;
+        }
         //this.usuario.email = res.email || "";
         //this.ls.set("usuarioLs", JSON.stringify(this.usuario));
         this.email = res.email || "";
+      }
+      else{
+        this.logueado = false;
       }
 
     });
@@ -59,6 +67,7 @@ export class NavbarComponent implements OnInit {
 
   salir(){
     this.logueado = false;
+    this.adminLogueado = false;
     this.authSvc.signOut();
     this.router.navigate(['bienvenida']);
   }
